@@ -51,151 +51,166 @@
         <title>Card Hover Effect</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
 <style>
-  $size: 50%%;
-
-  body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    background-color: rgb(230,230,230);
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0,0,0,0.2)
-  }
-  
-  .card{
-    width: calc(550px * #{$size / 100 });
-    height: calc(450px * #{$size / 100 });
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-    transform: rotate(-30deg);
-    position: relative;
-    z-index:1;
-    
-    &__left{
-      background-color: rgba(230,230,230,1);
-      width: 50%;
-      transform: rotate(-6deg) skew(-6deg, -6deg);
-      margin-right: -3px;
-      border: 1px solid rgba(20,20,20, .2);
-    }
-    
-    &__content {
-      height: calc(100% - (80px * #{$size / 100 }));
-      width: auto;
-      margin: calc(18px * #{$size / 100 });
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      
-      &__icon{
-        display: flex;
-        height: 64px;
-        width: 64px;
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      
-    }
-    
-    &__content div{
-      align-self: center; 
-      margin-top: 8px;
-    }
-    
-    &__right{
-      background-color: rgba(230, 230, 230, 1);
-      background-image: url(https://cdn1.designhill.com/uploads/pagefile/1541507080-14850242055be188084ba336-15014674.svg?ver=2.10.37);
-      background-position: center bottom;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 50%;
-      transform: rotate(6deg) skew(6deg, 6deg);
-      margin-left: -3px;
-      color: rgb(32,32,32);
-      border: 1px solid rgba(20,20,20, .3);
-    }
-    
-    &::before{
-      content: '';
-      background-color: rgba(0,0,0,.7);
-      position:absolute;
-      bottom: 5px;
-      right: calc(210px * #{$size / 100 });
-      height: calc(130px * #{$size / 100 });
-      width: calc(130px * #{$size / 100 });
-      transform: rotate(45deg) skew(-32deg, -32deg);
-      z-index:-1;
-      box-shadow: 
-        calc(180px* #{$size / 100 }) 
-        calc(180px * #{$size / 100 }) 
-        calc(30px * #{$size / 100 }) 
-        calc(45px * #{$size / 100 }) 
-        rgba(0,0,0,0.8);
-    }
-  }
-  
-  .center-text{
+  * {
+    box-sizing: border-box;
+}
+ 
+body {
+    background: #92bde7;
+    color: #485e74;
+    line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1em;
+}
+ 
+.container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+}
+ 
+ul {
+    list-style: none;
+    padding: 0;
+}
+ 
+.maint {
     text-align: center;
-  }
-  .align-top{
-    position: absolute;
-    top: 48px;
-    left: 48px;
-  }
+	color: white;
+}
+.section {
+    box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+}
+ 
+.section > * {
+    padding: 1em;
+}
+ 
+.brandname {
+    background: #c9e6ff;
+}
+ 
+.brandname h3, .brandname ul {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+ 
+.contact {
+    background: #f9feff;
+}
+ 
+.contact form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+ 
+.contact form label {
+    display: block;
+}
+ 
+.contact form p {
+    margin: 0;
+}
+ 
+.contact form .full {
+    grid-column: 1 / 3;
+}
+ 
+.contact form button, .contact form input, .contact form textarea {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #c9e6ff;
+}
+ 
+.contact form button {
+    background: #c9e6ff;
+    border: 0;
+    text-transform: uppercase;
+}
+ 
+.contact form button:hover, .contact form button:focus {
+    background: #92bde7;
+    color: #fff;
+    outline: 0;
+    transition: background-color 0.5s ease-out;
+}
+ 
+/* LARGE SCREENS */
+@media(min-width:700px) {
+    .section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+ 
+    .section > * {
+        padding: 2em;
+    }
+ 
+    .compnay-info h3, .brandname ul, .maint {
+        text-align: left;
+    }
+}
           
           
 </style>
-  </head>
-  <body>
-    <div>
-      <div class="card">
-        <div class="card__left">
-          <div class="card__content">
-            <div class="center-text">
-              A text <br />
-              was written<br />
-              here 
+<!DOCTYPE html>
+<!-- code by webdevtrick ( https://webdevtrick.com ) -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Form</title>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="maint">Contact Me</h1>
+        <div class="section animated bounceInLeft">
+            <div class="brandname">
+                <h3></h3>
+                <ul>
+                    <li> +917678037971</li>
+                    <li>sahaniavtar1@gmail.com</li>
+                    <li>https://www.linkedin.com/in/sahani-avtar-0241301b6/</li>
+                </ul>
             </div>
-            <div>
-              <div class="card__content__icon" style="background-image: url('https://rampages.us/topsakal/wp-content/themes/egr-faculty/images/chem-icon.png')">
-              </div>
+            <div class="contact">
+                <h3>Email Me</h3>
+                <form action="#">
+                    <p>
+                        <label for="#">Name</label>
+                        <input type="text" name="name">
+                    </p>
+                    <p>
+                        <label for="#">Company</label>
+                        <input type="text" name="company">
+                    </p>
+                    <p>
+                        <label for="#">Email Address</label>
+                        <input type="email" name="email">
+                    </p>
+                    <p>
+                        <label for="#">Phone Number</label>
+                        <input type="text" name="phone">
+                    </p>
+                    <p class="full">
+                        <label for="#">Message</label>
+                        <textarea name="message" cols="30" rows="5"></textarea>
+                    </p>
+                    <p class="full">
+                        <button>Submit</button>
+                    </p>
+                </form>
             </div>
-            <div class="center-text">
-              <small>
-                Some caption <br />
-                or something else <br />
-                here
-              </small>
-            </div>
-          </div>
         </div>
-        <div class="card__right">
-        <div class="card__content">
-            <div>
-              <div class="card__content__icon align-top" style="background-image: url('https://rampages.us/topsakal/wp-content/themes/egr-faculty/images/chem-icon.png')">
-            </div>
-            <div>
-              <h2>
-                MY <br />
-                BUSINESS  <br />
-                CARD
-              </h2>
-            </div>
-            <div>
-              Some caption or <br />
-              something else here <br />
-              <b>mail@domain.com</b>
-            </div>
-          </div>      
-        </div>
-      </div>
     </div>
-    
+</body>
+</html>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
